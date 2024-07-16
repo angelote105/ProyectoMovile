@@ -6,7 +6,7 @@
         {
             InitializeComponent();
 
-            MainPage = new NavigationPage(new Vistas.Login());
+            MainPage = new NavigationPage(new Vistas.Negocio.ImageCatcher());
         }
     }
 }

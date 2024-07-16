@@ -79,6 +79,7 @@ public partial class ImageCatcher : ContentPage
 
             var response = await httpClient.PostAsync("http://127.0.0.1:5000/detect_emotions", content);
 
+
             if (response.IsSuccessStatusCode)
             {
                 var responseContent = await response.Content.ReadAsStringAsync();

@@ -23,6 +23,9 @@
 
                 <Label x:Name="EmotionLabel" Text="Emoción:" />
                 <Label x:Name="StatusLabel" Text="Status:" />
+
+                <Entry x:Name="txtCliente" Placeholder="Ingrese cliente" />
+                <Entry x:Name="txtEntrevistador" Placeholder="Ingrese entrevistador" />
                 <Button
                        x:Name="btnSave"
                        Text="Guardar Datos"

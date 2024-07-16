@@ -1,5 +1,6 @@
 ﻿using Newtonsoft.Json;
 using System.Diagnostics;
+using System.Net;
 using System.Text;
 
 namespace ProyectoMovile.Vistas.Negocio;
@@ -119,6 +120,29 @@ public partial class ImageCatcher : ContentPage
 
     private void btnSave_Clicked(object sender, EventArgs e)
     {
+        try
+        {
+            WebClient cliente = new WebClient();
+
+            var parametros = new System.Collections.Specialized.NameValueCollection();
+
+            parametros.Add("ana_emocion", EmotionLabel.Text);
+            parametros.Add("cli_cod", txtCliente.Text);
+            parametros.Add("usu_cod", txtEntrevistador.Text);
+
+            cliente.UploadValues("http://localhost:81/Proyecto/AnaPost.php", "post", parametros);
+
+            Navigation.PushAsync(new vMenu());
+
+
+        }
+        catch (Exception ex)
+        {
+
+            DisplayAlert("alerta", ex.Message, "cerrar");
+        }
+
+
 
     }
 }

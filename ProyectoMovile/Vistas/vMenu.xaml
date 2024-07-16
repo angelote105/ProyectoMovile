@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="ProyectoMovile.Vistas.vMenu"
+             Title="vMenu">
+    <VerticalStackLayout>
+        <Label 
+     Text="Menu!"
+     VerticalOptions="Center" 
+     HorizontalOptions="Center"
+     FontSize="24"
+     FontAttributes="Bold"/>
+
+
+        <Frame Margin="20" Padding="5" HasShadow="True" BorderColor="Black" CornerRadius="5">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="auto"/>
+                    <RowDefinition Height="auto"/>
+                    <RowDefinition Height="auto"/>
+                    <RowDefinition Height="auto"/>
+                    <RowDefinition Height="auto"/>
+                    <RowDefinition Height="auto"/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition/>
+                </Grid.ColumnDefinitions>
+
+                <BoxView Color="DarkBlue" Grid.ColumnSpan="4" />
+
+                <Button Text="Realizar Entrevista" Grid.Row="0" Grid.Column="0" x:Name="btnRealizarEntrevista" Clicked="btnRealizarEntrevista_Clicked"/>
+                <Button Text="Registro Cliente" Grid.Row="1" Grid.Column="0" x:Name="btnRegistroCliente" Clicked="btnRegistroCliente_Clicked"/>
+
+                <Button Text="Mantenimiento" Grid.Row="2" Grid.Column="0" x:Name="btnMantenimiento" Clicked="btnMantenimiento_Clicked"/>
+                <Button Text="Salir" Grid.Row="3" Grid.Column="0" x:Name="btnSalir" Clicked="btnSalir_Clicked"/>
+
+            </Grid>
+        </Frame>
+    </VerticalStackLayout>
+</ContentPage>

@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="ProyectoMovile.Vistas.Cliente.vCliente"
+             Title="vCliente">
+    <VerticalStackLayout>
+        <Label 
+            Text="Welcome to .NET MAUI!"
+            VerticalOptions="Center" 
+            HorizontalOptions="Center" />
+
+        <Frame Margin="20" Padding="5" HasShadow="True" BorderColor="Black" CornerRadius="5">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="auto"/>
+                    <RowDefinition Height="auto"/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                </Grid.ColumnDefinitions>
+
+                <BoxView Color="AliceBlue" Grid.ColumnSpan="9" />
+
+                <Label  Grid.Row="0"   Grid.Column="0"  TextColor="Black" Text="Codigo" FontAttributes="Bold"/>
+                <Label  Grid.Row="0"   Grid.Column="1"  TextColor="Black" Text="DNI" FontAttributes="Bold"/>
+                <Label  Grid.Row="0"   Grid.Column="2"  TextColor="Black" Text="Nombre"  FontAttributes="Bold"/>
+                <Label  Grid.Row="0"   Grid.Column="3"  TextColor="Black" Text="Apellido"  FontAttributes="Bold"/>
+                <Label  Grid.Row="0"   Grid.Column="4"  TextColor="Black" Text="Fecha Nacimiento"  FontAttributes="Bold" />
+                <Label  Grid.Row="0"   Grid.Column="5"  TextColor="Black" Text="Edad"  FontAttributes="Bold"/>
+                <Label  Grid.Row="0"   Grid.Column="6"  TextColor="Black" Text="Estado"  FontAttributes="Bold"/>
+                <Label  Grid.Row="0"   Grid.Column="6" Grid.ColumnSpan="2" TextColor="Black" Text=""  FontAttributes="Bold"/>
+
+                <CollectionView x:Name="listaClientes" Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="9">
+                    <CollectionView.ItemTemplate>
+                        <DataTemplate>
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="*"/>
+                                </Grid.ColumnDefinitions>
+                                <Label x:Name="lblCodigo" Text="{Binding cli_cod}" Grid.Column="0" FontAttributes="Bold"/>
+                                <Label x:Name="lblDni" Text="{Binding cli_ci}" Grid.Column="1" />
+                                <Label x:Name="lblNombre" Text="{Binding cli_nombre}" Grid.Column="2" />
+                                <Label x:Name="lblApellido" Text="{Binding cli_apellido}" Grid.Column="3" />
+                                <Label x:Name="lblFN" Text="{Binding cli_fechaNac}" Grid.Column="4"/>
+                                <Label x:Name="lblEdad" Text="{Binding cli_edad}" Grid.Column="5" />
+                                <Label x:Name="lblEstado" Text="{Binding cli_estado}" Grid.Column="6" />
+                                <Button x:Name="btnEditar" Text="Editar" Grid.Column="7" Clicked="btnEditar_Clicked"/>
+                                <Button x:Name="btnEliinar" Text="Eliminar" Grid.Column="8" Clicked="btnEliinar_Clicked"/>
+                            </Grid>
+                        </DataTemplate>
+                    </CollectionView.ItemTemplate>
+                </CollectionView>
+            </Grid>
+        </Frame>
+
+        <Frame Margin="20" Padding="5" HasShadow="True" BorderColor="Black" CornerRadius="5">
+            <Grid>
+
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="auto" />
+                    <RowDefinition Height="auto"/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                <BoxView Color="AliceBlue" Grid.ColumnSpan="6" />
+
+                <Label  Grid.Row="0"   Grid.Column="0"  TextColor="Black" Text="DNI" FontAttributes="Bold"/>
+                <Label  Grid.Row="0"   Grid.Column="1"  TextColor="Black" Text="Nombre"  FontAttributes="Bold"/>
+                <Label  Grid.Row="0"   Grid.Column="2"  TextColor="Black" Text="Apellido"  FontAttributes="Bold"/>
+                <Label  Grid.Row="0"   Grid.Column="3"  TextColor="Black" Text="Fecha Nacimiento"  FontAttributes="Bold" />
+                <Label  Grid.Row="0"   Grid.Column="4"  TextColor="Black" Text="Edad"  FontAttributes="Bold"/>
+                <Label  Grid.Row="0"   Grid.Column="5"  TextColor="Black" Text="Estado"  FontAttributes="Bold"/>
+
+                <Entry Grid.Row="1" Grid.Column="0" Placeholder="Ingrese DNI" x:Name="txtDNI"/>
+                <Entry Grid.Row="1" Grid.Column="1" Placeholder="Ingrese Nombre" x:Name="txtNombre"/>
+                <Entry Grid.Row="1" Grid.Column="2" Placeholder="Ingrese Apellido" x:Name="txtApellido"/>
+                <Entry Grid.Row="1" Grid.Column="3" Placeholder="Ingrese Fecha Nacimiento" x:Name="txtFN"/>
+
+                <Entry Grid.Row="1" Grid.Column="4" Placeholder="Ingrese Edad" x:Name="txtEdad"/>
+
+                <Entry Grid.Row="1" Grid.Column="5" Placeholder="Estado" x:Name="txtEstado" />
+
+
+            </Grid>
+
+        </Frame>
+        <Button Text="Agregar" x:Name="btnAgregar" Clicked="btnAgregar_Clicked"/>
+
+    </VerticalStackLayout>
+</ContentPage>

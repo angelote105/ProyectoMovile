@@ -1,4 +1,4 @@
-using Newtonsoft.Json;
+ï»¿using Newtonsoft.Json;
 using System.Collections.ObjectModel;
 using System.Net;
 using System.Text;
@@ -31,13 +31,13 @@ public partial class vCliente : ContentPage
         // Obtener los nuevos valores de entrada del usuario
         string nuevoNombre = await DisplayPromptAsync("Editar", "Ingrese el nuevo nombre:", initialValue: clientes.cli_nombre);
         string nuevoApellido = await DisplayPromptAsync("Editar", "Ingrese el nuevo apellido:", initialValue: clientes.cli_apellido);
-        string nuevoFN = await DisplayPromptAsync("Editar", "Ingrese el nuevo fecha Nacimiento:", initialValue: clientes.cli_fechaNac);
+        //string nuevoFN = await DisplayPromptAsync("Editar", "Ingrese la nueva Fecha nacimiento:", initialValue: clientes.cli_fechaNac);
         string nuevaEdad = await DisplayPromptAsync("Editar", "Ingrese la nueva edad:", initialValue: clientes.cli_edad.ToString());
-        //string nuevoCodPerfil = await DisplayPromptAsync("Editar", "Ingrese el nuevo código de perfil:", initialValue: users.cod_perfil.ToString());
-        //string nuevoEstado = await DisplayPromptAsync("Editar", "Ingrese el nuevo estado:", initialValue: users.usu_estado.ToString());
 
-        if (!string.IsNullOrEmpty(nuevoNombre) && !string.IsNullOrEmpty(nuevoApellido) &&
-            !string.IsNullOrEmpty(nuevoFN) && !string.IsNullOrEmpty(nuevaEdad)
+        if (!string.IsNullOrEmpty(nuevoNombre) && !string.IsNullOrEmpty(nuevoApellido) 
+            //&&
+            //!string.IsNullOrEmpty(nuevoFN)
+            && !string.IsNullOrEmpty(nuevaEdad)
             //&&
             //!string.IsNullOrEmpty(nuevoCodPerfil) &&
             //!string.IsNullOrEmpty(nuevoEstado)
@@ -45,22 +45,20 @@ public partial class vCliente : ContentPage
         {
             try
             {
-                // Código para actualizar en el servidor web usando PUT
+                // CÃ³digo para actualizar en el servidor web usando PUT
                 using (WebClient cliente = new WebClient())
                 {
                     var parametros = new System.Collections.Specialized.NameValueCollection();
-                    //parametros.Add("usu_cod", clientes.cli_cod.ToString());
+                    parametros.Add("cli_cod", clientes.cli_cod.ToString());
                     parametros.Add("cli_nombre", nuevoNombre);
                     parametros.Add("cli_apellido", nuevoApellido);
-                    parametros.Add("cli_fechaNac", nuevoFN);
+                    //parametros.Add("cli_fechaNac", nuevoFN);
                     parametros.Add("cli_edad", nuevaEdad);
-                    //parametros.Add("cod_perfil", nuevoCodPerfil);
-                    //parametros.Add("per_estado", nuevoEstado);
 
                     // Crear una URI para la solicitud PUT
-                    Uri uri = new Uri($"http://localhost:81/Proyecto/UsuariosEditar.php?per_cod={clientes.cli_cod}");
+                    Uri uri = new Uri($"http://localhost:81/Proyecto/ClienteEditar.php?cli_cod={clientes.cli_cod}");
 
-                    // Convertir los parámetros en una cadena de consulta
+                    // Convertir los parÃ¡metros en una cadena de consulta
                     string queryString = string.Join("&", parametros.AllKeys.Select(key => $"{key}={parametros[key]}"));
 
                     // Crear un arreglo de bytes para los datos del PUT
@@ -71,36 +69,89 @@ public partial class vCliente : ContentPage
                     // Realizar la solicitud PUT
                     byte[] response = cliente.UploadData(uri, "PUT", data);
 
-                    // Opcionalmente, podrías manejar la respuesta del servidor aquí
+                    // Opcionalmente, podrÃ­as manejar la respuesta del servidor aquÃ­
                     string responseString = Encoding.UTF8.GetString(response);
                     await DisplayAlert("Servidor", $"Respuesta del servidor: {responseString}", "OK");
 
                     // Actualiza los valores en el objeto localmente
                     clientes.cli_nombre = nuevoNombre;
                     clientes.cli_apellido = nuevoApellido;
-                    clientes.cli_fechaNac = nuevoFN;
+
+                    //clientes.cli_fechaNac = nuevoFN;
                     clientes.cli_edad = int.Parse(nuevaEdad);
                     //users.cod_perfil = int.Parse(nuevoCodPerfil);
                     //users.usu_estado = int.Parse(nuevoEstado);
 
-                    await Navigation.PushAsync(new Vistas.Usuarios.vUsuarios());
+                    await Navigation.PushAsync(new Vistas.Cliente.vCliente());
                 }
             }
             catch (Exception ex)
             {
                 await DisplayAlert("Error", $"No se pudo actualizar en el servidor: {ex.Message}", "OK");
             }
-        }
 
+        }
     }
 
-    private void btnEliinar_Clicked(object sender, EventArgs e)
+        private async void btnEliinar_Clicked(object sender, EventArgs e)
     {
+        var button = sender as Button;
+        var clientes = button.BindingContext as Modelos.Cliente;
 
+        try
+        {
+            using (HttpClient client = new HttpClient())
+            {
+                var content = new FormUrlEncodedContent(new[]
+                {
+                new KeyValuePair<string, string>("cli_cod", clientes.cli_cod.ToString()) // Asegï¿½rate de tener el ID del estudiante
+            });
+
+                var response = await client.DeleteAsync("http://localhost:81/Proyecto/deleteCliente.php?cli_cod=" + clientes.cli_cod);
+                
+                if (response.IsSuccessStatusCode)
+                {
+                    DisplayAlert("alerta", "Cliente eliminado correctamente", "cerrar");
+
+                    await Navigation.PushAsync(new vCliente());
+                }
+                else
+                {
+                    DisplayAlert("alerta", "Error al eliminar Cliente", "cerrar");
+                }
+            }
+        }
+        catch (Exception ex)
+        {
+            DisplayAlert("alerta", ex.Message, "cerrar");
+        }
     }
 
     private void btnAgregar_Clicked(object sender, EventArgs e)
     {
+        try
+        {
+            WebClient cliente = new WebClient();
 
+            var parametros = new System.Collections.Specialized.NameValueCollection();
+
+            parametros.Add("cli_ci", txtDNI.Text);
+            parametros.Add("cli_nombre", txtNombre.Text);
+            parametros.Add("cli_apellido", txtApellido.Text);
+            parametros.Add("cli_fechaNac", txtFN.Text);
+            parametros.Add("cli_edad", txtEdad.Text);
+            parametros.Add("cli_estado", txtEstado.Text);
+
+            cliente.UploadValues("http://localhost:81/Proyecto/CLientePost.php", "post", parametros);
+
+            Navigation.PushAsync(new vCliente());
+
+
+        }
+        catch (Exception ex)
+        {
+
+            DisplayAlert("alerta", ex.Message, "cerrar");
+        }
     }
 }

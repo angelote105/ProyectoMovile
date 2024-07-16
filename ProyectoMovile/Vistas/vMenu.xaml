@@ -29,8 +29,7 @@
                 <BoxView Color="DarkBlue" Grid.ColumnSpan="4" />
 
                 <Button Text="Realizar Entrevista" Grid.Row="0" Grid.Column="0" x:Name="btnRealizarEntrevista" Clicked="btnRealizarEntrevista_Clicked"/>
-                <Button Text="Registro Cliente" Grid.Row="1" Grid.Column="0" x:Name="btnRegistroCliente" Clicked="btnRegistroCliente_Clicked"/>
-
+                
                 <Button Text="Mantenimiento" Grid.Row="2" Grid.Column="0" x:Name="btnMantenimiento" Clicked="btnMantenimiento_Clicked"/>
                 <Button Text="Salir" Grid.Row="3" Grid.Column="0" x:Name="btnSalir" Clicked="btnSalir_Clicked"/>
 

@@ -9,14 +9,10 @@ public partial class vMenu : ContentPage
 
     private void btnRealizarEntrevista_Clicked(object sender, EventArgs e)
     {
-
+        Navigation.PushAsync(new Vistas.Negocio.vNegocio());
     }
 
-    private void btnRegistroCliente_Clicked(object sender, EventArgs e)
-    {
-
-    }
-
+   
     private void btnMantenimiento_Clicked(object sender, EventArgs e)
     {
         Navigation.PushAsync(new Vistas.vMantenimiento());

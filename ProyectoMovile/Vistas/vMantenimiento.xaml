@@ -28,8 +28,10 @@
                 <Button Text="Perfiles" Grid.Row="0" Grid.Column="0" x:Name="btnPerfiles" Clicked="btnPerfiles_Clicked"/>
                 
                 <Button Text="Entrevistadores" Grid.Row="1" Grid.Column="0" x:Name="btnEntrevistador" Clicked="btnEntrevistador_Clicked"/>
+                <Button Text="Clientes" Grid.Row="2" Grid.Column="0" x:Name="btnRegistroCliente" Clicked="btnRegistroCliente_Clicked"/>
 
-                <Button Text="Analisis" Grid.Row="2" Grid.Column="0" x:Name="btnAnalisis" Clicked="btnAnalisis_Clicked"/>
+
+                <Button Text="Analisis" Grid.Row="3" Grid.Column="0" x:Name="btnAnalisis" Clicked="btnAnalisis_Clicked"/>
 
             </Grid>
         </Frame>

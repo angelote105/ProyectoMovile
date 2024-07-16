@@ -34,6 +34,7 @@
 
         <Label Text=" -------------------------------- O ---------------------------" HorizontalOptions="Center" FontSize="18" FontAttributes="Bold"/>
 
+        <Button x:Name="btnValdiarBD" Text="validar conexion" Clicked="btnValdiarBD_Clicked"/>
 
 
     </VerticalStackLayout>

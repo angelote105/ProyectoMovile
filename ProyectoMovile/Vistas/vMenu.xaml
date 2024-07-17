@@ -11,7 +11,6 @@
      FontSize="24"
      FontAttributes="Bold"/>
 
-
         <Frame Margin="20" Padding="5" HasShadow="True" BorderColor="Black" CornerRadius="5">
             <Grid>
                 <Grid.RowDefinitions>
@@ -26,12 +25,17 @@
                     <ColumnDefinition/>
                 </Grid.ColumnDefinitions>
 
-                <BoxView Color="DarkBlue" Grid.ColumnSpan="4" />
-
-                <Button Text="Realizar Entrevista" Grid.Row="0" Grid.Column="0" x:Name="btnRealizarEntrevista" Clicked="btnRealizarEntrevista_Clicked"/>
                 
-                <Button Text="Mantenimiento" Grid.Row="2" Grid.Column="0" x:Name="btnMantenimiento" Clicked="btnMantenimiento_Clicked"/>
-                <Button Text="Salir" Grid.Row="3" Grid.Column="0" x:Name="btnSalir" Clicked="btnSalir_Clicked"/>
+
+                <Button  Grid.Row="0" Grid.Column="0" x:Name="btnRealizarEntrevista" Clicked="btnRealizarEntrevista_Clicked" ImageSource="entrevista.png" WidthRequest="100" HeightRequest="100" Text="Realizar Entrevista">
+                    
+                </Button>
+                
+                <Button Text="Mantenimiento" Grid.Row="2" Grid.Column="0" x:Name="btnMantenimiento" Clicked="btnMantenimiento_Clicked" ImageSource="configuracion.png" HeightRequest="100" WidthRequest="100">
+                    
+
+                </Button>
+                <Button Text="Salir" Grid.Row="3" Grid.Column="0" x:Name="btnSalir" Clicked="btnSalir_Clicked" ImageSource="https://img.freepik.com/vector-premium/salir-trabajo-rutina-trabajador-negocios-traje-corriendo-toda-prisa-puerta-emergencia-salida-senal_178156-809.jpg" HeightRequest="100" WidthRequest="100"/>
 
             </Grid>
         </Frame>

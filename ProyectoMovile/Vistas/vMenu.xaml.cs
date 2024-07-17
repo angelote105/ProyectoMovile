@@ -9,7 +9,7 @@ public partial class vMenu : ContentPage
 
     private void btnRealizarEntrevista_Clicked(object sender, EventArgs e)
     {
-        Navigation.PushAsync(new Vistas.Negocio.vNegocio());
+        Navigation.PushAsync(new Vistas.Negocio.ImageCatcher());
     }
 
    

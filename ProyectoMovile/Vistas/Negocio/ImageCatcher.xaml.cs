@@ -78,7 +78,7 @@ public partial class ImageCatcher : ContentPage
             var json = JsonConvert.SerializeObject(new { image = base64Image });
             var content = new StringContent(json, Encoding.UTF8, "application/json");
 
-            var response = await httpClient.PostAsync("http://127.0.0.1:5000/detect_emotions", content);
+            var response = await httpClient.PostAsync("http://10.2.2.234:5000/detect_emotions", content);
 
 
             if (response.IsSuccessStatusCode)
@@ -132,7 +132,7 @@ public partial class ImageCatcher : ContentPage
 
             cliente.UploadValues("http://localhost:81/Proyecto/AnaPost.php", "post", parametros);
 
-            Navigation.PushAsync(new vMenu());
+            Navigation.PushAsync(new Vistas.Analisis.vAnalisis());
 
 
         }

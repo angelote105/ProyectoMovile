@@ -10,6 +10,8 @@
             VerticalOptions="Center" 
             HorizontalOptions="Center"
             FontSize="25"/>
+        
+        <Image Source="logo_emociones.png" WidthRequest="200" HeightRequest="200" />
 
 
         <Frame>
@@ -34,7 +36,7 @@
 
         <Label Text=" -------------------------------- O ---------------------------" HorizontalOptions="Center" FontSize="18" FontAttributes="Bold"/>
 
-        <Button x:Name="btnValdiarBD" Text="validar conexion" Clicked="btnValdiarBD_Clicked"/>
+       
 
 
     </VerticalStackLayout>

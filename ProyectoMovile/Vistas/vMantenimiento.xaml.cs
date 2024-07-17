@@ -19,7 +19,7 @@ public partial class vMantenimiento : ContentPage
 
     private void btnAnalisis_Clicked(object sender, EventArgs e)
     {
-        
+        Navigation.PushAsync(new Vistas.Analisis.vAnalisis());
     }
 
     private void btnRegistroCliente_Clicked(object sender, EventArgs e)

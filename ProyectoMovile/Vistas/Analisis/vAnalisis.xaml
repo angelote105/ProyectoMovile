@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="ProyectoMovile.Vistas.Analisis.vAnalisis"
+             Title="vAnalisis">
+    <VerticalStackLayout>
+        <Label 
+            Text="Analisis Resultados!"
+            VerticalOptions="Center" 
+            HorizontalOptions="Center" />
+
+        <Frame Margin="20" Padding="5" HasShadow="True" BorderColor="Black" CornerRadius="5">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="auto"/>
+                    <RowDefinition Height="auto"/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                </Grid.ColumnDefinitions>
+
+                <BoxView Color="AliceBlue" Grid.ColumnSpan="9" />
+
+                <Label  Grid.Row="0"   Grid.Column="0"  TextColor="Black" Text="Codigo" FontAttributes="Bold"/>
+                <Label  Grid.Row="0"   Grid.Column="1"  TextColor="Black" Text="Emocion" FontAttributes="Bold"/>
+                <Label  Grid.Row="0"   Grid.Column="2"  TextColor="Black" Text="codigo Cliente"  FontAttributes="Bold"/>
+                <Label  Grid.Row="0"   Grid.Column="3"  TextColor="Black" Text="Nombre Cliente"  FontAttributes="Bold"/>
+                <Label  Grid.Row="0"   Grid.Column="4"  TextColor="Black" Text="Apellido Cliente"  FontAttributes="Bold"/>
+                <Label  Grid.Row="0"   Grid.Column="5"  TextColor="Black" Text="codigo Usuario"  FontAttributes="Bold" />
+                <Label  Grid.Row="0"   Grid.Column="6"  TextColor="Black" Text="correo Usuario"  FontAttributes="Bold"/>
+                <Label  Grid.Row="0"   Grid.Column="7" Grid.ColumnSpan="2" TextColor="Black" Text=""  FontAttributes="Bold"/>
+
+                <CollectionView x:Name="listaResultados" Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="9">
+                    <CollectionView.ItemTemplate>
+                        <DataTemplate>
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="*"/>
+                                </Grid.ColumnDefinitions>
+                                <Label x:Name="lblCodigo" Text="{Binding ana_cod}" Grid.Column="0" FontAttributes="Bold"/>
+                                <Label x:Name="lblEmocion" Text="{Binding ana_emocion}" Grid.Column="1" />
+                                <Label x:Name="lblCodCliente" Text="{Binding cli_cod}" Grid.Column="2" />
+                                <Label x:Name="lblClienteNombre" Text="{Binding cli_nombre}" Grid.Column="3" />
+                                <Label x:Name="lblClienteApellido" Text="{Binding cli_apellido}" Grid.Column="4" />
+                                <Label x:Name="lblCodUsuario" Text="{Binding usu_cod}" Grid.Column="5" />
+                                <Label x:Name="lblUsuCorreo" Text="{Binding usu_correo}" Grid.Column="6" />
+                                <Button x:Name="btnEditar" Text="Editar" Grid.Column="7" Clicked="btnEditar_Clicked"/>
+                                <Button x:Name="btnEliinar" Text="Eliminar" Grid.Column="8" Clicked="btnEliinar_Clicked"/>
+                            </Grid>
+                        </DataTemplate>
+                    </CollectionView.ItemTemplate>
+                </CollectionView>
+            </Grid>
+        </Frame>
+
+        
+
+    </VerticalStackLayout>
+</ContentPage>

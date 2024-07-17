@@ -63,9 +63,7 @@ public partial class Login : ContentPage
     
 
 
-    private  void btnValdiarBD_Clicked(object sender, EventArgs e)
-    {
-    } 
+   
 }
 
 
